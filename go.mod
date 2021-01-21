@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/gobwas/glob v0.0.0-20170212200151-51eb1ee00b6d
+	github.com/grailbio/go-dicom v0.0.0-20190117035129-c30d9eaca591
 	github.com/stretchr/testify v1.2.2
 	golang.org/x/text v0.3.0
 )
@@ -19,10 +20,6 @@ replace github.com/grailbio/bigmachine => ../bigmachine
 replace github.com/grailbio/bigslice => ../bigslice
 
 replace github.com/grailbio/bio => ../bio
-
-replace github.com/grailbio/go-dicom => ../go-dicom
-
-replace github.com/grailbio/go-netdicom => ../go-netdicom
 
 replace github.com/grailbio/hts => ../hts
 
