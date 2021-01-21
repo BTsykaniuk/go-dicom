@@ -1,4 +1,6 @@
-module github.com/grailbio/go-dicom
+module github.com/BTsykaniuk/go-dicom
+
+go 1.15
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
