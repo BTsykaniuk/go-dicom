@@ -125,12 +125,12 @@ func WriteElement(e *dicomio.Encoder, elem *Element) {
 		}
 	} else {
 		if err == nil && entry.VR != vr {
-			//if dicomtag.GetVRKind(elem.Tag, entry.VR) != dicomtag.GetVRKind(elem.Tag, vr) {
-			//	// The golang repl. is different. We can't continue.
-			//	e.SetErrorf("dicom.WriteElement: VR value mismatch for tag %s. Element.VR=%v, but DICOM standard defines VR to be %v",
-			//		dicomtag.DebugString(elem.Tag), vr, entry.VR)
-			//	return
-			//}
+			if dicomtag.GetVRKind(elem.Tag, entry.VR) != dicomtag.GetVRKind(elem.Tag, vr) {
+				// The golang repl. is different. We can't continue.
+				e.SetErrorf("dicom.WriteElement: VR value mismatch for tag %s. Element.VR=%v, but DICOM standard defines VR to be %v",
+					dicomtag.DebugString(elem.Tag), vr, entry.VR)
+				return
+			}
 			dicomlog.Vprintf(1, "dicom.WriteElement: VR value mismatch for tag %s. Element.VR=%v, but DICOM standard defines VR to be %v (continuing)",
 				dicomtag.DebugString(elem.Tag), vr, entry.VR)
 		}
