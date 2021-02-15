@@ -3,6 +3,7 @@ package dicom_test
 import (
 	"bytes"
 	"fmt"
+	"github.com/BTsykaniuk/go-dicom/dicomio"
 	"log"
 	"os"
 	"path/filepath"
@@ -243,4 +244,20 @@ func BenchmarkParseSingle(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		_ = mustReadFile("examples/IM-0001-0001.dcm", dicom.ReadOptions{})
 	}
+}
+
+func TestTransferSyntax(t *testing.T) {
+	ds, err := dicom.ReadDataSetFromFile("/Users/admin/Desktop/projects/binomix/go-netdicom/test_store.dcm", dicom.ReadOptions{})
+	assert.NoError(t, err)
+
+	elem, err := ds.FindElementByTag(dicomtag.TransferSyntaxUID)
+	if err != nil {
+		log.Println(err)
+	}
+	transferSyntaxUID, err := elem.GetString()
+	log.Println(err)
+	dicomio.ParseTransferSyntaxUID(transferSyntaxUID)
+	//log.Println(bo)
+	//log.Println(impl)
+	//log.Println(err)
 }

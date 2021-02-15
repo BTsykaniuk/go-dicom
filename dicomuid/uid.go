@@ -36,6 +36,7 @@ var (
 	ExplicitVRLittleEndian         = standardUID("1.2.840.10008.1.2.1")
 	ExplicitVRBigEndian            = standardUID("1.2.840.10008.1.2.2")
 	DeflatedExplicitVRLittleEndian = standardUID("1.2.840.10008.1.2.1.99")
+	JPEGVRLittleEndian             = standardUID("1.2.840.10008.1.2.4.70")
 )
 
 type UIDInfo struct {
