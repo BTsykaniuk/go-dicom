@@ -3,8 +3,6 @@ package dicomio
 import (
 	"encoding/binary"
 	"fmt"
-	"log"
-
 	"github.com/BTsykaniuk/go-dicom/dicomuid"
 )
 
@@ -26,14 +24,12 @@ var StandardTransferSyntaxes = []string{
 // explicit little endian.
 func CanonicalTransferSyntaxUID(uid string) (string, error) {
 	// defaults are explicit VR, little endian
-	log.Println(uid)
 	switch uid {
 	case dicomuid.ImplicitVRLittleEndian,
 		dicomuid.ExplicitVRLittleEndian,
 		dicomuid.ExplicitVRBigEndian,
 		dicomuid.JPEGVRLittleEndian,
 		dicomuid.DeflatedExplicitVRLittleEndian:
-		log.Println("In case")
 		return uid, nil
 	default:
 		e, err := dicomuid.Lookup(uid)
