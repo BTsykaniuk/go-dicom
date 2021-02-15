@@ -55,9 +55,6 @@ func CanonicalTransferSyntaxUID(uid string) (string, error) {
 // (LittleEndian, ExplicitVR).
 func ParseTransferSyntaxUID(uid string) (bo binary.ByteOrder, implicit IsImplicitVR, err error) {
 	canonical, err := CanonicalTransferSyntaxUID(uid)
-	log.Println("In func")
-	log.Println(canonical)
-	log.Println("++++++++++")
 	if err != nil {
 		return nil, UnknownVR, err
 	}
